@@ -37,17 +37,6 @@ def signup():
 
     success('signup', '');
 
-def signup():
-    username = input('New username: ');
-    password = input('New password: ');
-
-    with open('users.csv', 'w') as csvfile:
-        filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL);
-        filewriter.writerow(['username', str(username)]);
-        filewriter.writerow(['password', str(password)]);
-
-    success('signup', '');
-
 def login():
     ifile  = open('users.csv', "rb")
     read = csv.reader(codecs.iterdecode(ifile, 'utf-8'))
