@@ -1,0 +1,42 @@
+
+.mat-raised-button {
+  width: 100%;
+  margin-bottom: 10px;
+  color: #fff;
+
+  .fa {
+    font-size: 1.25em;
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+  }
+
+  &[data-facebook] {
+    background-color: #3b5998;
+  }
+
+  &[data-twitter] {
+    background-color: #1da1f2;
+  }
+
+  &[data-email] {
+    background-color: rgb(121, 121, 121);
+  }
+
+  &[data-button] {
+    margin: 0;
+  }
+}
+
+.mat-form-field {
+  width: 100%;
+
+  & ~ .mat-raised-button {
+    float: right;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+}

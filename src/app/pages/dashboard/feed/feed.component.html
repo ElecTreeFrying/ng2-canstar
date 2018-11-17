@@ -1,0 +1,95 @@
+
+<div id="spinner">
+  <div>
+    <mat-progress-spinner mode="indeterminate" color="warn" *ngIf="isLoading"></mat-progress-spinner>
+  </div>
+</div>
+
+<div id="top-content" *ngIf="!isLoading">
+  <form [formGroup]="filterForm" *ngIf="isAdvanced">
+    <mat-form-field color="accent" appearance="outline">
+      <mat-label>Location</mat-label>
+      <input matInput [matAutocomplete]="reactiveAuto" formControlName="filter" #text>
+      <mat-autocomplete #reactiveAuto="matAutocomplete" [displayWith]="displayFn"></mat-autocomplete>
+    </mat-form-field>
+  </form>
+
+  <mat-form-field color="accent" appearance="outline" *ngIf="!isAdvanced">
+    <mat-label>City</mat-label>
+    <!-- <input matInput type="text" formControlName=""> -->
+    <input matInput type="text" autocomplete="off">
+  </mat-form-field>
+  <mat-divider></mat-divider>
+
+  <mat-form-field color="accent" appearance="outline" *ngIf="!isAdvanced">
+    <mat-label>Brand</mat-label>
+    <!-- <mat-select formControlName="type"> -->
+    <mat-select>
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let item of carModel" [value]="item">{{ item }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+
+  <mat-form-field color="accent" appearance="outline" *ngIf="!isAdvanced">
+    <mat-label>Number of seats</mat-label>
+    <!-- <mat-select formControlName="type"> -->
+    <mat-select>
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let item of no_seats" [value]="item">{{ item }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+
+  <mat-form-field color="accent" appearance="outline" *ngIf="!isAdvanced">
+    <mat-label>Model</mat-label>
+    <!-- <input matInput type="text" formControlName=""> -->
+    <input matInput type="text" autocomplete="off">
+  </mat-form-field>
+  <mat-divider></mat-divider>
+
+  <mat-form-field color="accent" appearance="outline" *ngIf="!isAdvanced">
+    <mat-label>Transmission</mat-label>
+    <!-- <mat-select formControlName="type"> -->
+    <mat-select>
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let item of transmission" [value]="item">{{ item }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-divider></mat-divider>
+
+  <button mat-raised-button color="accent" (click)="isAdvanced = !isAdvanced" *ngIf="isAdvanced">ADVANCED SEARCH</button>
+
+
+  <button mat-raised-button (click)="isAdvanced = !isAdvanced"  *ngIf="!isAdvanced">TOGGLE</button>
+  <br>
+  <br>
+  <button mat-raised-button color="accent" *ngIf="!isAdvanced">SEARCH CARS</button>
+
+
+</div>
+
+<div id="center-content" *ngIf="!isLoading">
+
+  <mat-card *ngFor="let car of (registerCars | async); trackBy: trackByFn" matRipple (click)="openCar(car)">
+    <div id="discount">
+      <p>{{ car?.discount }}%</p>
+      <p>{{ car?.car_data?.rent_per_day }} AUD</p>
+    </div>
+    <mat-card-content>
+      <img src="https://goo.gl/DZYX2Z">
+      <div>
+        <div class="left-pane">
+          <p>{{ car?.car_data?.brand | ucfirst }}</p>
+          <p>{{ car?.car_data?.model }}</p>
+        </div>
+        <div class="right-pane">
+          <ngbd-rating-decimal [currentRate]="car?.rating"></ngbd-rating-decimal>
+          <p>{{ car?.city }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

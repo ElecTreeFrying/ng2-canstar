@@ -1,0 +1,130 @@
+$pane-margin: 20px;
+
+
+#register-content-2 {
+
+  .top-pane {
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: space-between;
+  }
+
+}
+
+.mat-divider {
+  margin: 8px 0;
+}
+
+#register-form {
+
+  .mat-card {
+    width: 435px;
+  }
+
+  .mat-card-content {
+
+    & > .form-container {
+      div {
+        display: flex;
+        justify-content: space-between;
+        .mat-form-field:first-child {
+          width: 100%;
+          margin-right: 5px;
+        }
+        .mat-form-field:last-child {
+          width: 100%;
+          margin-left: 5px;
+        }
+      }
+    }
+
+    form > .action-container {
+      display: flex;
+      [type="file"] {
+        display: none;
+      }
+      .mat-raised-button {
+        margin-left: auto;
+      }
+    }
+
+  }
+
+}
+
+
+
+
+#register-content {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
+  .content { padding: 0 10px; }
+  .mat-divider { margin-bottom: 10px; }
+
+  #left-pane {
+    margin: 0 $pane-margin;
+    width: 500px;
+    padding: 0 10px;
+
+    .mat-card-content {
+
+      & > .form-container {
+        div {
+          display: flex;
+          justify-content: space-between;
+          .mat-form-field:first-child {
+            width: 100%;
+            margin-right: 5px;
+          }
+          .mat-form-field:last-child {
+            width: 100%;
+            margin-left: 5px;
+          }
+        }
+      }
+
+      & > .action-container {
+        display: flex;
+        .mat-raised-button {
+          margin-left: auto;
+        }
+      }
+
+    }
+
+    .mat-mini-fab {
+      float: right;
+      margin-top: 8px;
+      margin-right: 8px;
+    }
+
+  }
+
+
+  #right-pane {
+    margin: 0 $pane-margin;
+    width: 500px;
+
+    .mat-card {
+
+      .car-container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        p { margin: 0; }
+        & > div:first-child {
+          width: 30%;
+        }
+        & > div:last-child {
+          width: 70%;
+        }
+      }
+
+
+    }
+
+  }
+
+}

@@ -1,0 +1,42 @@
+
+<button mat-raised-button data-facebook (click)="social('facebook')" *ngIf="!isEmail">
+  <i class="fa fa-facebook"></i>
+  Connect with Facebook
+</button>
+<button mat-raised-button data-twitter (click)="social('twitter')" *ngIf="!isEmail">
+  <i class="fa fa-twitter"></i>
+  Connect with Twitter
+</button>
+<button mat-raised-button data-email (click)="social('email')" *ngIf="!isEmail">
+  <i class="fa fa-envelope"></i>
+  Email address
+</button>
+<button mat-raised-button data-button (click)="onBack(true)" *ngIf="!isEmail">
+  Back
+</button>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="form" *ngIf="isEmail">
+  <mat-form-field color="accent" appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" formControlName="email">
+    <mat-error *ngIf="error?.email?.required; else else1">
+      <mat-error *ngIf="error?.email?.required">This is required.</mat-error>
+    </mat-error>
+    <ng-template #else1>
+      <mat-error *ngIf="error?.email?.email">Invalid email</mat-error>
+    </ng-template>
+  </mat-form-field>
+  <mat-form-field color="accent" appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" formControlName="password">
+    <mat-error *ngIf="error?.password?.required; else else2">
+      <mat-error *ngIf="error?.password?.required">This is required.</mat-error>
+    </mat-error>
+    <ng-template #else2>
+      <mat-error *ngIf="error?.password !== null">Password must be greater than 6 characters</mat-error>
+    </ng-template>
+  </mat-form-field>
+
+  <button mat-raised-button type="submit">LOG IN</button>
+  <button mat-raised-button type="button" (click)="onBack(false)">BACK</button>
+</form>

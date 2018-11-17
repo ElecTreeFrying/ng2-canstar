@@ -1,0 +1,75 @@
+
+
+
+<div id="register-content-2">
+
+  <div class="top-pane">
+    <h3>Registered Cars</h3>
+
+    <button mat-mini-fab (click)="registerCar()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+</div>
+
+<mat-divider></mat-divider>
+
+<div id="register-form" *ngIf="isRegister">
+<!-- <div id="register-form" *ngIf="true"> -->
+
+  <mat-card>
+    <mat-card-content>
+
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+
+        <div class="form-container">
+          <div>
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Car type</mat-label>
+              <mat-select formControlName="type">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let item of [ 'a', 'b', 'c', 'd' ]" [value]="item">{{ item }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Auto / Manual</mat-label>
+              <mat-select formControlName="name">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let item of [ 'Auto', 'Manual' ]" [value]="item">{{ item }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Car model</mat-label>
+              <input matInput type="text" formControlName="model">
+            </mat-form-field>
+            <mat-form-field color="accent" appearance="outline">
+              <mat-label>Plate No.</mat-label>
+              <input matInput type="text" formControlName="number">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="action-container">
+
+          <input type="file" #file (change)="photo($event)">
+          <button mat-icon-button type="button" (click)="file.click()">
+            <mat-icon>photo</mat-icon>
+          </button>
+          <button mat-raised-button color="accent">REGISTER CAR</button>
+        </div>
+
+      </form>
+
+      <img src="{{ image }}" alt="">
+
+
+    </mat-card-content>
+  </mat-card>
+
+</div>
+
+<div id="registered-cars">
+
+</div>

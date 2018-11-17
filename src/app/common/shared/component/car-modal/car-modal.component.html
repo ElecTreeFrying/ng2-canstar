@@ -1,0 +1,23 @@
+
+<div id="car-modal-container" data-simplebar>
+
+  <h1>{{ data.car_data.brand  | ucfirst }}</h1>
+  <ngbd-rating-decimal [currentRate]="data.rating"></ngbd-rating-decimal>
+
+  <img src="https://goo.gl/DZYX2Z" alt="my future audi">
+
+  <br>
+  <br>
+
+  <p>{{ data.car_data.description }}</p>
+  <p><strong>Location: </strong>{{ data.city }}</p>
+  <p><strong>Number of seats: </strong>{{ data.car_data.no_seats }}</p>
+  <p><strong>Plate No. </strong>{{ data.car_data.place_no }}</p>
+  <p><strong>Status: </strong>{{ data.car_data.status | ucfirst }}</p>
+  <p><strong>Model: </strong>{{ data.car_data.model | ucfirst }}</p>
+  <p><strong>Transmission: </strong>{{ data.car_data.transmission | ucfirst }}</p>
+  <p><strong>Rent per day: </strong>{{ data.car_data.rent_per_day }} AUD</p>
+
+
+
+</div>
